@@ -1,0 +1,84 @@
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+.counter-display {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 20px;
+  color: #333;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.increment { background-color: #28a745; color: white; }
+.decrement { background-color: #dc3545; color: white; }
+.reset { background-color: #6c757d; color: white; }
+
+.btn:hover {
+  opacity: 0.9;
+}
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  // Initialize the state variable 'count' to 0
+  const [count, setCount] = useState(0);
+
+  // Function to increase the counter value
+  const increment = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  // Function to decrease the counter value
+  const decrement = () => {
+    setCount((prevCount) => prevCount - 1);
+  };
+
+  // Function to reset the counter back to zero
+  const reset = () => {
+    setCount(0);
+  };
+
+  return (
+    <div className="counter-container">
+      <h1>React Counter App</h1>
+      
+      {/* Displaying the active state value */}
+      <div className="counter-display">{count}</div>
+      
+      <div className="button-group">
+        <button className="btn decrement" onClick={decrement}>
+          - Decrement
+        </button>
+        <button className="btn reset" onClick={reset}>
+          Reset
+        </button>
+        <button className="btn increment" onClick={increment}>
+          + Increment
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
